@@ -4,6 +4,7 @@ using FluentAssertions;
 
 namespace CarShop.Tests.Entities
 {
+    [Trait("Category", "Car")]
     public sealed class CarTests
     {
         private readonly Faker _faker = new("pt_BR");
@@ -13,21 +14,6 @@ namespace CarShop.Tests.Entities
         {
             //Arrange
             var expectedCarName = _faker.Vehicle.Model();    
-            var expectedId = Guid.NewGuid();
-
-            //Act
-            var car = new Car(expectedId, expectedCarName);
-
-            //Assert
-            Assert.Equal(expectedCarName, car.Name);
-            Assert.Equal(expectedId, car.Id);
-        }
-
-        [Fact]
-        public void FluentAssenrtions_Constructor_GivenAllParameters_ThenShouldSetThePropertiesCorrectly()
-        {
-            //Arrange
-            var expectedCarName = _faker.Vehicle.Model();
             var expectedId = Guid.NewGuid();
 
             //Act
